@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Bridge - Configuración</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      max-width: 520px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 { font-size: 1.3rem; font-weight: 400; margin-bottom: 2rem; }
+    label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: #8888aa; }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #16213e;
+      color: #e0e0e0;
+      outline: none;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      padding: 10px 28px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      background: #0f3460;
+      color: #e0e0e0;
+      cursor: pointer;
+    }
+    button:hover { background: #1a4a8a; }
+    #status { margin-top: 1rem; font-size: 0.85rem; color: #4a9; }
+    .help-link { font-size: 0.8rem; color: #556; margin-bottom: 1.5rem; display: block; }
+    .help-link a { color: #668; }
+  </style>
+</head>
+<body>
+  <h1>Configuración</h1>
+
+  <label for="provider">Proveedor de IA</label>
+  <select id="provider">
+    <option value="gemini">Google Gemini (gratuito)</option>
+    <option value="openai">OpenAI (requiere API key de pago)</option>
+    <option value="anthropic">Anthropic (requiere API key de pago)</option>
+    <option value="ollama">Ollama (local, sin costo)</option>
+  </select>
+
+  <label for="key-gemini">API Key — Gemini</label>
+  <input type="text" id="key-gemini" placeholder="AIza..." />
+  <span class="help-link"><a href="https://aistudio.google.com/apikey" target="_blank">Obtener API key gratuita de Gemini</a></span>
+
+  <label for="key-openai">API Key — OpenAI</label>
+  <input type="text" id="key-openai" placeholder="sk-..." />
+
+  <label for="key-anthropic">API Key — Anthropic</label>
+  <input type="text" id="key-anthropic" placeholder="sk-ant-..." />
+
+  <label for="url-ollama">URL de Ollama</label>
+  <input type="text" id="url-ollama" placeholder="http://localhost:11434" />
+
+  <button id="save">Guardar</button>
+  <div id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

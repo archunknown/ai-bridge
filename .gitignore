@@ -1,0 +1,29 @@
+# Rust
+native-host/target/
+**/*.rs.bk
+
+# Node
+node_modules/
+package-lock.json
+
+# Extension build
+extension/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Config with secrets
+native-host/config.local.toml
+
+# Packed extension
+*.crx
+*.pem
+*.zip

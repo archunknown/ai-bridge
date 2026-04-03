@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Bridge Protocol",
+  "description": "Mensajes entre la extensión y el native host",
+  "oneOf": [
+    {
+      "title": "QueryRequest",
+      "type": "object",
+      "required": ["type", "prompt"],
+      "properties": {
+        "type": { "const": "query" },
+        "prompt": { "type": "string" },
+        "provider": { "type": ["string", "null"], "enum": ["gemini", "openai", "anthropic", "ollama", null] }
+      }
+    },
+    {
+      "title": "QueryResponse",
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "response" },
+        "text": { "type": "string" },
+        "provider": { "type": "string" },
+        "error": { "type": ["string", "null"] }
+      }
+    }
+  ]
+}

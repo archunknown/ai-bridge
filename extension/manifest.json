@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "AI Bridge",
+  "version": "0.1.0",
+  "description": "Consulta múltiples proveedores de IA directamente desde tu navegador.",
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "sidePanel"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "newtab/index.html"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/panel.html"
+  },
+  "omnibox": {
+    "keyword": "ai"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
