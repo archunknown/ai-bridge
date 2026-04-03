@@ -10,14 +10,11 @@ chrome.runtime.sendMessage({ type: "get_config" }, (config) => {
   }
 });
 
-input.addEventListener("keydown", async (e) => {
-  if (e.key !== "Enter" || !input.value.trim()) return;
-
-  const prompt = input.value.trim();
-
+function sendQuery(prompt) {
   loadingEl.classList.add("visible");
   responseEl.classList.remove("visible");
   responseEl.textContent = "";
+  input.value = prompt;
 
   chrome.runtime.sendMessage(
     { type: "query", prompt },
@@ -33,4 +30,17 @@ input.addEventListener("keydown", async (e) => {
       responseEl.classList.add("visible");
     }
   );
+}
+
+// Check for pending query from omnibox
+chrome.storage.local.get("pendingQuery", (data) => {
+  if (data.pendingQuery) {
+    chrome.storage.local.remove("pendingQuery");
+    sendQuery(data.pendingQuery);
+  }
+});
+
+input.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" || !input.value.trim()) return;
+  sendQuery(input.value.trim());
 });
